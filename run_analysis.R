@@ -2,7 +2,6 @@
 setwd("C:\\Users\\johnot\\Google Drive\\Data Science\\03 Getting and Cleaning Data\\Week_3\\Project\\getdata-projectfiles-UCI HAR Dataset\\UCI HAR Dataset")
 
 # Load the required libraries
-library(dplyr)
 library(data.table)
 
 # Read feature names
@@ -101,7 +100,7 @@ class(subSetData)
 subSetData <- data.table(subSetData)
 
 # Create tidyDataSet as a set with average for each activity and subject
-tidyData <- aggregate(. ~Subject + Activity, subSetData, mean)
+tidyDataSet <- aggregate(. ~Subject + Activity, subSetData, mean)
 
 # Order tidyDataSet according to subject and activity
 tidyDataSet <- tidyDataSet[order(tidyDataSet$Subject, tidyDataSet$Activity), ]
