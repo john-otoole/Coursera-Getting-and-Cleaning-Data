@@ -1,9 +1,6 @@
 # Set the working directory
 setwd("C:\\Users\\johnot\\Google Drive\\Data Science\\03 Getting and Cleaning Data\\Week_3\\Project\\getdata-projectfiles-UCI HAR Dataset\\UCI HAR Dataset")
 
-# Load the required libraries
-library(data.table)
-
 # Read feature names
 featureNames <- read.table("features.txt", header = FALSE)
 
@@ -94,10 +91,6 @@ names(subSetData) <- gsub("tBody", "TimeBody", names(subSetData))
 # Set the Activity and Subject variables as factors
 subSetData$Activity <- as.factor(subSetData$Activity)
 subSetData$Subject <- as.factor(subSetData$Subject)
-
-# Convert the data.frame to a data.table
-class(subSetData)
-subSetData <- data.table(subSetData)
 
 # Create tidyDataSet as a set with average for each activity and subject
 tidyDataSet <- aggregate(. ~Subject + Activity, subSetData, mean)
