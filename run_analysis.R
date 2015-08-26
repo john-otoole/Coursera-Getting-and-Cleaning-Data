@@ -91,10 +91,6 @@ names(subSetData) <- gsub("tBody", "TimeBody", names(subSetData))
 # Please upload your data set as a txt file created with write.table() using row.name=FALSE
 #
 
-# Set the Activity and Subject variables as factors
-subSetData$Activity <- as.factor(subSetData$Activity)
-subSetData$Subject <- as.factor(subSetData$Subject)
-
 # Create tidyDataSet as a set with average for each activity and subject
 tidyDataSet <- subSetData %>% group_by(Subject, Activity) %>% summarise_each(funs(mean)) %>% arrange(Subject, Activity)
 

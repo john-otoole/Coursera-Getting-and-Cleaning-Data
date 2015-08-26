@@ -36,9 +36,5 @@ In summary, the R script "run_analysis.R" does the following:
 * Set the activityLabels to lower case and remove the underscore
 * Apply the labels to *subSetData*
 * Use gsub to tidy up some column names
-* In preparation for calling *aggregate*, set Activity and Subject as factors
-* Call *aggregate" using the dot notation format, to get the mean, grouping by Activity and Subject
-* Order the dataset by Subject and Activity
+* Use dplyr chaining to group the data by Activity and Subject, then summarise based on mean and then order by Subject, Activity
 * Write the dataset out to *TidyDataSet.txt*
-
-
