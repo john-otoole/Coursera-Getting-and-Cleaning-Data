@@ -1,6 +1,9 @@
 # Set the working directory
 setwd("C:\\Users\\johnot\\Google Drive\\Data Science\\03 Getting and Cleaning Data\\Week_3\\Project\\getdata-projectfiles-UCI HAR Dataset\\UCI HAR Dataset")
 
+# Load the dplyr library which we need to call summarise
+library(dplyr)
+
 # Read feature names
 featureNames <- read.table("features.txt", header = FALSE)
 
@@ -93,7 +96,7 @@ subSetData$Activity <- as.factor(subSetData$Activity)
 subSetData$Subject <- as.factor(subSetData$Subject)
 
 # Create tidyDataSet as a set with average for each activity and subject
-tidyDataSet <- aggregate(. ~Subject + Activity, subSetData, mean)
+tidyDataSet <- subSetData %>% group_by(Subject, Activity) %>% summarise_each(funs(mean))
 
 # Order tidyDataSet according to subject and activity
 tidyDataSet <- tidyDataSet[order(tidyDataSet$Subject, tidyDataSet$Activity), ]
