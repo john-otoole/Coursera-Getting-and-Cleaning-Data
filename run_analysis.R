@@ -96,10 +96,7 @@ subSetData$Activity <- as.factor(subSetData$Activity)
 subSetData$Subject <- as.factor(subSetData$Subject)
 
 # Create tidyDataSet as a set with average for each activity and subject
-tidyDataSet <- subSetData %>% group_by(Subject, Activity) %>% summarise_each(funs(mean))
-
-# Order tidyDataSet according to subject and activity
-tidyDataSet <- tidyDataSet[order(tidyDataSet$Subject, tidyDataSet$Activity), ]
+tidyDataSet <- subSetData %>% group_by(Subject, Activity) %>% summarise_each(funs(mean)) %>% arrange(Subject, Activity)
 
 # Write tidyDataSet to a text file
 write.table(tidyDataSet, file = "TidyDataSet.txt", row.names = FALSE)
